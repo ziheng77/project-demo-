@@ -1,6 +1,5 @@
 package com.example.todolist_demo
 
-import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todolist_demo.data.TodoItem
 import com.google.android.material.snackbar.Snackbar
 
 class TodoListAdapter(private val todoList: MutableList<TodoItem>):RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {

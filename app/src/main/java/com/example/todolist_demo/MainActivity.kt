@@ -6,6 +6,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todolist_demo.data.TodoItem
 
 class MainActivity : AppCompatActivity() {
     private lateinit var todoListAdapter: TodoListAdapter;
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
+        // 通过database单例模式创建Dao对象
         // 注入主页面
         setContentView(R.layout.activity_main);
         // 获取视图实例
@@ -31,13 +33,12 @@ class MainActivity : AppCompatActivity() {
         btnAddTodo.setOnClickListener {
             val todoText = etTodo.text.toString()
             if (todoText.isNotEmpty()) {
-                val todo = TodoItem(todoText)
+                val todo = TodoItem(text=todoText)
                 todoListAdapter.addTodo(todo)
                 println(todoListAdapter.getItemCount())
                 println("RecyclerView Visibility: ${recyclerView.visibility}")
                 todoListAdapter.notifyDataSetChanged()
                 etTodo.text.clear()
-
             }
         }
     }
